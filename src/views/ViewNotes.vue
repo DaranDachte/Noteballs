@@ -1,6 +1,22 @@
 <template>
   <div class="notes">
-    <div class="card has-background-success-dark p-4 mb-5">
+    <AddEditNote
+      v-model="newNote"
+      ref="addEditNoteRef"
+      placeholder="Add a New Note"
+    >
+      <template #buttons>
+        <button
+          @click.prevent="addNote"
+          :disabled="!newNote"
+          class="button is-link has-background-success"
+        >
+          Add New Note
+        </button>
+      </template>
+    </AddEditNote>
+
+    <!-- <div class="card has-background-success-dark p-4 mb-5">
       <div class="field">
         <div class="control">
           <textarea
@@ -23,7 +39,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <Note v-for="note in storeNotes.notes" :key="note.id" :note="note" />
   </div>
@@ -31,14 +47,16 @@
 
 <script setup lang="ts">
 import Note from "../components/Notes/Note.vue";
+import AddEditNote from "../components/Notes/AddEditNote.vue";
 import { useStoreNotes } from "../stores/storeNotes";
 import { ref } from "vue";
 
 const storeNotes = useStoreNotes();
 
 const newNote = ref("");
+const addEditNoteRef = ref(null);
 
-const newNoteRef = ref(null);
+//const newNoteRef = ref(null);
 
 // const notes = ref([
 //   {
@@ -64,7 +82,8 @@ const addNote = () => {
   //   };
   //   notes.value.unshift(note);
   newNote.value = "";
-  newNoteRef.value.focus();
+  addEditNoteRef.value.focusTextarea();
+  //newNoteRef.value.focus();
   // };
   // const deleteNote = (idToDelete: string) => {
   //   notes.value = notes.value.filter((note) => {
