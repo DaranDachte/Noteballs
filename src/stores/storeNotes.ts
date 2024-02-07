@@ -18,7 +18,7 @@ export const useStoreNotes = defineStore("storeNotes", {
     };
   },
   actions: {
-    addNote(newNoteContent: string) {
+    addNote(newNoteContent: Object) {
       let currentDate = new Date().getTime(),
         id = currentDate.toString();
 
@@ -30,9 +30,29 @@ export const useStoreNotes = defineStore("storeNotes", {
       this.notes.unshift(note);
     },
     deleteNote(idToDelete: string) {
-      this.notes = this.notes.filter((note) => {
-        return note.id !== idToDelete;
+      this.notes = this.notes.filter((note) => note.id !== idToDelete);
+    },
+    updateNote(id, content) {
+      let index = this.notes.findIndex((note) => note.id === id);
+      this.notes[index].content = content;
+    },
+  },
+  // getters всегда возвращают, поэтому требуется ретёрн
+  getters: {
+    getNoteContent: (state) => {
+      return (id: string) => {
+        return state.notes.filter((note) => note.id === id)[0].content;
+      };
+    },
+    totalNotesCount: (state) => {
+      return state.notes.length;
+    },
+    totalCharactersCount: (state) => {
+      let count = 0;
+      state.notes.forEach((note) => {
+        count += note.content.length;
       });
+      return count;
     },
   },
 });
