@@ -10,6 +10,8 @@
           ref="textareaRef"
           :value="modelValue"
           @input="$emit('update:modelValue', $event.target.value)"
+          v-autofocus
+          maxlength="100"
         />
       </div>
     </div>
@@ -24,6 +26,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { vAutofocus } from "../../directives/vAutofocus";
 const props = defineProps({
   modelValue: {
     type: String,
