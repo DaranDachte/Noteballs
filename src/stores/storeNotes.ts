@@ -18,7 +18,26 @@ export const useStoreNotes = defineStore("storeNotes", {
     };
   },
   actions: {
-    addNote(newNoteContent: Object) {
+    // addNote(newNoteContent: string | object) {
+    //   let currentDate = new Date().getTime(),
+    //     id = currentDate.toString();
+
+    //   let content: string;
+    //   if (typeof newNoteContent === "string") {
+    //     content = newNoteContent;
+    //   } else {
+    //     content = JSON.stringify(newNoteContent);
+    //   }
+
+    //   let note = {
+    //     id,
+    //     content,
+    //   };
+
+    //   this.notes.unshift(note);
+    // },
+
+    addNote(newNoteContent: string) {
       let currentDate = new Date().getTime(),
         id = currentDate.toString();
 
@@ -29,10 +48,11 @@ export const useStoreNotes = defineStore("storeNotes", {
 
       this.notes.unshift(note);
     },
+
     deleteNote(idToDelete: string) {
       this.notes = this.notes.filter((note) => note.id !== idToDelete);
     },
-    updateNote(id, content) {
+    updateNote(id: string, content: string) {
       let index = this.notes.findIndex((note) => note.id === id);
       this.notes[index].content = content;
     },

@@ -49,13 +49,13 @@
 import Note from "../components/Notes/Note.vue";
 import AddEditNote from "../components/Notes/AddEditNote.vue";
 import { useStoreNotes } from "../stores/storeNotes";
-import { ref } from "vue";
+import { ref, type Ref } from "vue";
 import { useWatchCharacters } from "@/use/useWatchCharacters";
-
+import { type AddEditNoteApi } from "@/components/Notes/AddEditNote.vue";
 const storeNotes = useStoreNotes();
 
-const newNote = ref("");
-const addEditNoteRef = ref(null);
+const newNote = ref<string>("");
+const addEditNoteRef: Ref<AddEditNoteApi | null> = ref(null);
 
 //const newNoteRef = ref(null);
 
@@ -73,7 +73,7 @@ const addEditNoteRef = ref(null);
 // ]);
 
 const addNote = () => {
-  storeNotes.addNote(newNote.value);
+  storeNotes.addNote(newNote.value as string);
   //   let currentDate = new Date().getTime(),
   //     id = currentDate.toString();
 
@@ -83,7 +83,8 @@ const addNote = () => {
   //   };
   //   notes.value.unshift(note);
   newNote.value = "";
-  addEditNoteRef.value.focusTextarea();
+  addEditNoteRef.value && addEditNoteRef.value.focusTextarea();
+
   //newNoteRef.value.focus();
   // };
   // const deleteNote = (idToDelete: string) => {
