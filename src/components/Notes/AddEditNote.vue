@@ -9,7 +9,12 @@
           :placeholder="placeholder"
           ref="textareaRef"
           :value="modelValue"
-          @input="$emit('update:modelValue', $event.target.value)"
+          @input="
+            $emit(
+              'update:modelValue',
+              ($event.target as HTMLTextAreaElement)?.value
+            )
+          "
           v-autofocus
           maxlength="100"
         />
@@ -47,12 +52,17 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue"]);
 
-const textareaRef = ref(null);
+const textareaRef = ref<HTMLTextAreaElement | null>(null);
+
 const focusTextarea = () => {
-  textareaRef.value.focus();
+  textareaRef.value && textareaRef.value.focus();
 };
 
 defineExpose({
   focusTextarea,
 });
+
+export type AddEditNoteApi = {
+  focusTextarea: () => void;
+};
 </script>

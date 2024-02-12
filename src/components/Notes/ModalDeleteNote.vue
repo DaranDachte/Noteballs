@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { onClickOutside, tryOnUnmounted } from "@vueuse/core";
+import { onClickOutside } from "@vueuse/core";
 import { useStoreNotes } from "@/stores/storeNotes";
 
 const storeNotes = useStoreNotes();
@@ -46,7 +46,7 @@ const modalCardRef = ref(null);
 
 onClickOutside(modalCardRef, closeModal);
 
-const handleKeyboard = (e) => {
+const handleKeyboard = (e: { key: string }) => {
   if (e.key === "Escape") closeModal();
 };
 
