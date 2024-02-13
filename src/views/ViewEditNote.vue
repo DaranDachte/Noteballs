@@ -8,11 +8,6 @@
       label="Edit Note"
     >
       <template #buttons>
-        <!-- 1 способ
-           <RouterLink to="/" class="button is-link is-light">Cancel</RouterLink> -->
-
-        <!-- 2 способ  и 3 внизу
-          @click="$router.back()" -->
         <button @click="$router.push('/')" class="button is-link is-light mr-2">
           Cancel
         </button>

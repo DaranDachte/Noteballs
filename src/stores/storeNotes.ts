@@ -18,25 +18,6 @@ export const useStoreNotes = defineStore("storeNotes", {
     };
   },
   actions: {
-    // addNote(newNoteContent: string | object) {
-    //   let currentDate = new Date().getTime(),
-    //     id = currentDate.toString();
-
-    //   let content: string;
-    //   if (typeof newNoteContent === "string") {
-    //     content = newNoteContent;
-    //   } else {
-    //     content = JSON.stringify(newNoteContent);
-    //   }
-
-    //   let note = {
-    //     id,
-    //     content,
-    //   };
-
-    //   this.notes.unshift(note);
-    // },
-
     addNote(newNoteContent: string) {
       let currentDate = new Date().getTime(),
         id = currentDate.toString();
@@ -57,7 +38,7 @@ export const useStoreNotes = defineStore("storeNotes", {
       this.notes[index].content = content;
     },
   },
-  // getters всегда возвращают, поэтому требуется ретёрн
+
   getters: {
     getNoteContent: (state) => {
       return (id: string) => {

@@ -45,17 +45,11 @@ const props = defineProps({
 
 const storeNotes = useStoreNotes();
 
-//const emit = defineEmits(["deleteClicked"]);
-
 const characterLength = computed(() => {
   let length = props.note.content.length;
   let description = length > 1 ? "caracters" : "caracter";
   return `${length} ${description} `;
 });
-
-// const handleDeleteClicked = () => {
-//   emit("deleteClicked", props.note.id);
-// };
 
 const modals = reactive({
   deleteNote: false,
