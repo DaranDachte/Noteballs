@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 mb-5" :class="`has-background-${bgColor}-dark`">
     <label v-if="label" class="label has-text-white">{{ label }}</label>
-    <!-- или props.bgColor, разницы нет -->
+
     <div class="field">
       <div class="control">
         <textarea
