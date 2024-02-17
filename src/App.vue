@@ -8,5 +8,5 @@ import NavBar from "./components/layout/NavBar.vue";
 </script>
 
 <style>
-@import "D:\VueWithUdemi\Noteballs\node_modules\bulma\css\bulma.min.css";
+@import "bulma/css/bulma.min.css";
 </style>
