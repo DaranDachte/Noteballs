@@ -1,4 +1,4 @@
-This app was created by me as part of my training for the Vue framework. The Vue course was purchased by me on the Udemy platform. 
+This app was created by me as part of my training for the Vue framework. The Vue course was purchased by me on the Udemy platform. The CSS Framework Bulma was used to write the styles 
  <a href="https://noteballs-gules.vercel.app/#/" target="_blank">Noteballs</a> 
 ![1](https://github.com/DaranDachte/Noteballs/assets/96144068/18dff138-79d4-4da4-8c4a-f58707bd3cf3)
 ![2](https://github.com/DaranDachte/Noteballs/assets/96144068/8355e8e3-e68d-4bed-bf2f-8633a932a6aa)
